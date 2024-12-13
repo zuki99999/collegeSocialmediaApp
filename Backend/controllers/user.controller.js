@@ -117,12 +117,13 @@ export const login = async(req,res)=>{
         const populatedPost = await Promise.all(
             user.post.map(async(postId)=>{
                 const post = await Post.findById(postId);
+                console.log("post>>>",post);
                 if(post.author.equals(user._id)){
                     return post
                 }return null;
             })
         );
-
+        
 
         user = {
             _id:user._id,
@@ -153,7 +154,8 @@ export const logout  = async (_,res) => {
         return res.cookie("token","",{maxAge:0}).json({
             message: "logged out successfully",
             success:true,
-        })
+        });
+        
     }catch(err){
         console.log("error:",err);
     }
@@ -223,7 +225,7 @@ export const getSuggestedUsers = async (req,res)=>{
             })
         }
 
-        console.log("suggesteduser>>>",suggestedUsers);
+
 
         return res.status(200).json({
             success:true,

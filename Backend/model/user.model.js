@@ -19,10 +19,6 @@ const userSchema = new mongoose.Schema({
         type:String,
         default:""
     },
-    hobby:{
-        type:String,
-        default:""
-    },
     gender:{
         type:String,
         enum:["male",'female','']
@@ -53,7 +49,6 @@ const userSchema = new mongoose.Schema({
         type:String,
         default:""
     },
-    
 },{timestamps:true});
 
 export const User = mongoose.model("User",userSchema);

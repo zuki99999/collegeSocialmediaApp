@@ -217,7 +217,6 @@ export const deletePost = async (req,res)=>{
         user.post = user.post.filter(id => id.toString()!= postId);
         await user.save();
 
-
         await Comment.deleteMany({post:postId});
 
         return res.status(200).json({

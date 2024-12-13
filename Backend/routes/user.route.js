@@ -11,6 +11,6 @@ router.route("/logout").get(logout);
 router.route("/:id/profile").get(isAuthenticated,getprofile);
 router.route("/profile/edit").post(isAuthenticated,upload.single('profilepicture'),editProfile);
 router.route("/suggested").get(isAuthenticated,getSuggestedUsers);
-
+// adfriend
 
 export default router;
