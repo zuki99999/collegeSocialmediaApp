@@ -155,7 +155,7 @@ export const logout  = async (_,res) => {
             message: "logged out successfully",
             success:true,
         });
-        
+
     }catch(err){
         console.log("error:",err);
     }
@@ -214,14 +214,14 @@ export const editProfile = async (req,res)=>{
 
 export const getSuggestedUsers = async (req,res)=>{
     try{
-        console.log("backend getSuggested user");
+
         const suggestedUsers = await User.find({ 
             _id: { $nin: [req.id, "64891aefd53c9e0aaf2b91a7"] } 
         }).select("-password");
             
         if(!suggestedUsers){
             return res.status(401).json({
-                messgaer:"donat have suggestion",
+                messgaer:"dont have suggestion",
             })
         }
 
