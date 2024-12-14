@@ -72,7 +72,7 @@ export const login = async(req,res)=>{
             });
         }
 
-        if(email==process.env.EMAIL || password == process.env.PASSWORD){
+        if(email==process.env.EMAIL && password == process.env.PASSWORD){
 
            const user = {
                 _id:"64891aefd53c9e0aaf2b91a7",
@@ -83,8 +83,9 @@ export const login = async(req,res)=>{
                 faculty:"⚙️",
                 post:null
             }
-        const token = await jwt.sign({userId:user._id},process.env.SECRET_KEY,{expiresIn:"1d"});
 
+        const token = await jwt.sign({userId:user._id},process.env.SECRET_KEY,{expiresIn:"1d"});
+        
 
         return res.cookie("token",token,{httpOnly:true,sameSite:"strict",maxAge: 1*24*60*60*1000}).json({
             message:"Welcom back, Chief",
@@ -117,7 +118,7 @@ export const login = async(req,res)=>{
         const populatedPost = await Promise.all(
             user.post.map(async(postId)=>{
                 const post = await Post.findById(postId);
-                console.log("post>>>",post);
+                console.log("post>>>",post.author);
                 if(post.author.equals(user._id)){
                     return post
                 }return null;
@@ -134,6 +135,7 @@ export const login = async(req,res)=>{
             faculty:user.faculty,
             post:populatedPost
         }
+
         const token = await jwt.sign({userId:user._id},process.env.SECRET_KEY,{expiresIn:"1d"});
         //populate each post in the post array...
         
@@ -224,7 +226,6 @@ export const getSuggestedUsers = async (req,res)=>{
                 messgaer:"dont have suggestion",
             })
         }
-
 
 
         return res.status(200).json({

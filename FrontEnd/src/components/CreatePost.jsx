@@ -71,8 +71,9 @@ function CreatePost({ open, setOpen }) {
 
   return (
     <>
-      <Dialog open={open}>
-        <DialogContent onInteractOutside={() => setOpen(false)}>
+
+      <Dialog open={open} >
+        <DialogContent onInteractOutside={() => setOpen(false)} className="max-h-[95vh]">
           <div className="flex justify-between">
             <DialogHeader className="text-center font-semibold">
               create new post
@@ -98,7 +99,7 @@ function CreatePost({ open, setOpen }) {
             
           </div>
         
-          <div className="flex gap-3 items-center>">
+          <div className="flex gap-3 items-center ">
             <Avatar>
               <AvatarImage src={user.profilePicture} alt="img" />
               <AvatarFallback>CN</AvatarFallback>

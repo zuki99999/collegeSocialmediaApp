@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 
 
 function Post({post}) {
+  const altImg = "https://static.vecteezy.com/system/resources/previews/003/715/527/non_2x/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-vector.jpg";
     const [text,setText] = useState('');
     const [open ,setOpen] = useState(false);
     const {user} = useSelector(store=>store.auth);
@@ -109,7 +110,7 @@ function Post({post}) {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Avatar>
-              <AvatarImage src={post.author?.profilepicture} alt="post_Image" />
+              <AvatarImage src={post.author?.profilepicture  || altImg} alt="post_Image" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <div className="flex">

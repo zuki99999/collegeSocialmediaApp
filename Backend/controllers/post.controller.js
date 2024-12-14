@@ -212,7 +212,7 @@ export const deletePost = async (req,res)=>{
 
         await Post.findByIdAndDelete(postId);
 
-        let user = await User.findById(authorId);
+        let user = await User.findById(post.author);
 
         user.post = user.post.filter(id => id.toString()!= postId);
         await user.save();
@@ -224,7 +224,7 @@ export const deletePost = async (req,res)=>{
             success:true
         });
 
-        
+
     }catch(err){
         console.log(err);
     }
@@ -232,7 +232,7 @@ export const deletePost = async (req,res)=>{
 
 
 
-                ///api hasent tested-----
+                ///api hsnt tested-----
 
 
 

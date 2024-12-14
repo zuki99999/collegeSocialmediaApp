@@ -113,7 +113,9 @@ function LeftSideBar() {
     <div className=" fixed top-0 z-10 left-0 px-4 border-r border-gray-300 w-[16%] h-screen">
 
         <div className='flex flex-col  '>
-            <h1 className='font-extrabold my-7 pl-3 text-xl '>Logo</h1>
+            <h1 className='font-extrabold my-7 pl-3 text-xl'>
+               campus Network
+            </h1>
             <div>
                 {
                     sidebarItems.map((item,index)=>{
